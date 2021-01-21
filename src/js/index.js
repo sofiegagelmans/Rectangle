@@ -11,8 +11,8 @@
 
 // in te dienen: surgelink + githublink
 
-// import randomColor from "randomcolor";
 var randomColor = require("randomcolor");
+// import randomColor from "randomcolor";
 
 class Rectangle {
   constructor(w, h, x, y) {
@@ -20,16 +20,16 @@ class Rectangle {
     this._h = h;
     this._x = x;
     this._y = y;
-    this._ref = this.generateHTML();
+    this._ref = this.generateInitialHTML();
     this.setUpStyling();
     this.setUpEvents();
   }
-  generateHTML() {
+  generateInitialHTML() {
     document.body.insertAdjacentHTML(
       "afterbegin",
-      `<button 
+      `<div 
             class="rectangle">
-       </button>`
+       </div>`
     );
     return document.querySelector("div:first-child");
   }
@@ -41,12 +41,33 @@ class Rectangle {
       left: this._x + "px",
       backgroundColor: randomColor.randomColor(),
     };
-    // Object.assign(this._ref.style, styles);
+    Object.assign(this._ref.style, styles);
   }
   setUpEvents() {
-    this.ref.onclick = this.setUpStyling();
+    this._ref.onclick = this.setUpStyling;
+  }
+  get width() {
+    return this._width + "px";
+  }
+  set width(value) {
+    this._width = value;
+    this.setUpStyling;
+  }
+  get height() {
+    return this._height + "px";
+  }
+  set height(value) {
+    this._height = value;
+    this.setUpStyling;
   }
 }
 
 const rectangleOne = new Rectangle(80, 80, 100, 100);
 const rectangleTwo = new Rectangle(200, 80, 200, 200);
+
+console.log(
+  rectangleOne.width,
+  rectangleOne.height,
+  rectangleOne.x,
+  rectangleOne.y
+);
