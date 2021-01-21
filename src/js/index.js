@@ -51,14 +51,14 @@ class Rectangle {
   }
   set width(value) {
     this._width = value;
-    this.setUpStyling;
+    this.setUpStyling();
   }
   get height() {
     return this._height + "px";
   }
   set height(value) {
     this._height = value;
-    this.setUpStyling;
+    this.setUpStyling();
   }
 }
 
@@ -70,4 +70,11 @@ console.log(
   rectangleOne.height,
   rectangleOne.x,
   rectangleOne.y
+);
+
+console.log(
+  rectangleTwo.width,
+  rectangleTwo.height,
+  rectangleTwo.x,
+  rectangleTwo.y
 );
