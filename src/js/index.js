@@ -34,7 +34,7 @@ class Rectangle {
     return document.querySelector("div:first-child");
   }
   setUpStyling() {
-    const size = {
+    const styles = {
       width: this._w + "px",
       height: this._h + "px",
       top: this._y + "px",
