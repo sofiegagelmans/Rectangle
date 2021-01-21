@@ -20,11 +20,11 @@ class Rectangle {
     this._h = h;
     this._x = x;
     this._y = y;
-    this._ref = this.generateInitialHTML();
+    this._ref = this.generateHTML();
     this.setUpStyling();
     this.setUpEvents();
   }
-  generateInitialHTML() {
+  generateHTML() {
     document.body.insertAdjacentHTML(
       "afterbegin",
       `<div 
@@ -37,14 +37,17 @@ class Rectangle {
     const styles = {
       width: this._w + "px",
       height: this._h + "px",
-      top: this._y + "px",
-      left: this._x + "px",
+      top: this._x + "px",
+      left: this._y + "px",
       backgroundColor: randomColor.randomColor(),
     };
     Object.assign(this._ref.style, styles);
   }
   setUpEvents() {
-    this._ref.onclick = this.setUpStyling;
+    // this._ref.onclick = this.setUpStyling;
+    this._ref.addEventListener("click", () => {
+      this.style();
+    });
   }
   get width() {
     return this._width + "px";
@@ -60,10 +63,27 @@ class Rectangle {
     this._height = value;
     this.setUpStyling();
   }
+  get x() {
+    return this._x + "px";
+  }
+  set x(value) {
+    this._x = value;
+    this.setUpStyling();
+  }
+  get y() {
+    return this._y + "px";
+  }
+  set y(value) {
+    this._y = value;
+    this.setUpStyling();
+  }
+  getOppervlakte() {
+    return "De oppervlakte is " + this._w * this._h;
+  }
 }
 
-const rectangleOne = new Rectangle(80, 80, 100, 100);
-const rectangleTwo = new Rectangle(200, 80, 200, 200);
+const rectangleOne = new Rectangle(200, 100, 50, 100);
+const rectangleTwo = new Rectangle(400, 100, 200, 200);
 
 console.log(
   rectangleOne.width,
@@ -78,3 +98,6 @@ console.log(
   rectangleTwo.x,
   rectangleTwo.y
 );
+
+console.log(rectangleOne.getOppervlakte());
+console.log(rectangleTwo.getOppervlakte());
