@@ -28,12 +28,12 @@ class Rectangle {
     document.body.insertAdjacentHTML(
       "afterbegin",
       `<div 
-            class="rectangle">
+          class="rectangle">
        </div>`
     );
     return document.querySelector("div:first-child");
   }
-  setUpStyling() {
+  setUpStyling = () => {
     const styles = {
       width: this._w + "px",
       height: this._h + "px",
@@ -42,12 +42,13 @@ class Rectangle {
       backgroundColor: randomColor.randomColor(),
     };
     Object.assign(this._ref.style, styles);
-  }
+  };
   setUpEvents() {
     // this._ref.onclick = this.setUpStyling;
-    this._ref.addEventListener("click", () => {
-      this.style();
-    });
+    // this._ref.addEventListener("click", () => {
+    //   this.style();
+    // });
+    this._ref.onclick = this.setUpStyling;
   }
   get width() {
     return this._width + "px";
@@ -83,7 +84,7 @@ class Rectangle {
 }
 
 const rectangleOne = new Rectangle(200, 100, 50, 100);
-const rectangleTwo = new Rectangle(400, 100, 200, 200);
+const rectangleTwo = new Rectangle(600, 300, 200, 200);
 
 console.log(
   rectangleOne.width,
